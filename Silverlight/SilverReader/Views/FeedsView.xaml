@@ -30,8 +30,14 @@
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="auto"/>
 			</Grid.ColumnDefinitions>
-			<TextBox TextWrapping="Wrap" Margin="2,1,1,1"/>
-			<Button Content="添加" Width="75" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="5,2,3,1"/>
+			<TextBox x:Name="textBox" TextWrapping="Wrap" Margin="2,1,1,1"/>
+			<Button Content="添加" Width="75" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="5,2,3,1">
+				<i:Interaction.Triggers>
+					<i:EventTrigger EventName="Click">
+						<i:InvokeCommandAction Command="{Binding AddFeedCommand}" CommandParameter="{Binding Text, ElementName=textBox}"/>
+					</i:EventTrigger>
+				</i:Interaction.Triggers>
+			</Button>
 		</Grid>
 		<ListBox Grid.Row="2" ItemsSource="{Binding Feeds}">
 			<ListBox.Resources>
