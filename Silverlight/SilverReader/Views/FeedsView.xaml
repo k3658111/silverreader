@@ -12,7 +12,7 @@
 		<local:FeedsViewModel x:Key="FeedsViewModelDataSource" />
 	</UserControl.Resources>
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedsViewModelDataSource}}">
+	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedsViewModelDataSource}}" d:DataContext="{d:DesignData /SampleData/FeedsViewModelSampleData.xaml}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
 			<RowDefinition Height="auto"/>
@@ -33,6 +33,17 @@
 			<TextBox TextWrapping="Wrap" Margin="2,1,1,1"/>
 			<Button Content="添加" Width="75" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="5,2,3,1"/>
 		</Grid>
-		<ListBox Grid.Row="2"/>
+		<ListBox Grid.Row="2" ItemsSource="{Binding Feeds}">
+			<ListBox.Resources>
+				<DataTemplate x:Key="ListItemTitleTemplate">
+					<StackPanel>
+						<TextBlock TextWrapping="Wrap" Text="{Binding Title.Text, Mode=OneWay}"/>
+					</StackPanel>
+				</DataTemplate>
+			</ListBox.Resources>
+			<ListBox.ItemTemplate>
+				<StaticResource ResourceKey="ListItemTitleTemplate"/>
+			</ListBox.ItemTemplate>
+		</ListBox>
 	</Grid>
 </UserControl>
