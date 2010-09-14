@@ -6,23 +6,28 @@ using System.ComponentModel;
 
 namespace SilverReader
 {
-	public class FeedsViewModel : INotifyPropertyChanged
-	{
-		public FeedsViewModel()
-		{
-			
-		}
+    using System.Collections.ObjectModel;
+    using System.ServiceModel.Syndication;
 
-		#region INotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+    public class FeedsViewModel : INotifyPropertyChanged
+    {
+        public FeedsViewModel()
+        {
+            
+        }
 
-		private void NotifyPropertyChanged(String info)
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(info));
-			}
-		}
-		#endregion
-	}
+        public ObservableCollection<SyndicationFeed> Feeds { get; private set; }
+
+        #region INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void NotifyPropertyChanged(String info)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
+        #endregion
+    }
 }
