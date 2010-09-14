@@ -3,13 +3,36 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	mc:Ignorable="d"
 	xmlns:local="clr-namespace:SilverReader"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+	mc:Ignorable="d"
 	x:Class="SilverReader.FeedsView"
-	d:DesignWidth="64" d:DesignHeight="48">
+	d:DesignWidth="200" d:DesignHeight="300">
 	<UserControl.Resources>
 		<local:FeedsViewModel x:Key="FeedsViewModelDataSource" />
 	</UserControl.Resources>
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedsViewModelDataSource}}"/>
+	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedsViewModelDataSource}}">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<Button Content="添加订阅" Margin="3" Width="75" d:LayoutOverrides="Height" HorizontalAlignment="Left">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="Click">
+					<ei:ChangePropertyAction TargetObject="{Binding ElementName=grid}" PropertyName="Visibility"/>
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</Button>
+		<Grid x:Name="grid" Grid.Row="1" Visibility="Collapsed">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="auto"/>
+			</Grid.ColumnDefinitions>
+			<TextBox TextWrapping="Wrap" Margin="2,1,1,1"/>
+			<Button Content="添加" Width="75" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Top" Margin="5,2,3,1"/>
+		</Grid>
+		<ListBox Grid.Row="2"/>
+	</Grid>
 </UserControl>

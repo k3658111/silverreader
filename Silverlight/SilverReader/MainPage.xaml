@@ -9,8 +9,8 @@
 
     <Grid x:Name="LayoutRoot" Background="White">
     	<Grid.ColumnDefinitions>
-    		<ColumnDefinition Width="0.3*"/>
-    		<ColumnDefinition Width="0.7*"/>
+    		<ColumnDefinition Width="*"/>
+    		<ColumnDefinition Width="2*"/>
     	</Grid.ColumnDefinitions>
 
     	<local:FeedsView/>
