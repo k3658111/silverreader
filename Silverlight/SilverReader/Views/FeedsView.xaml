@@ -39,7 +39,7 @@
 				</i:Interaction.Triggers>
 			</Button>
 		</Grid>
-		<ListBox Grid.Row="2" ItemsSource="{Binding Feeds}">
+		<ListBox Grid.Row="2" ItemsSource="{Binding Feeds}" SelectedItem="{Binding SelectedFeed, Mode=TwoWay}">
 			<ListBox.Resources>
 				<DataTemplate x:Key="ListItemTitleTemplate">
 					<StackPanel>

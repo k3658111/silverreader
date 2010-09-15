@@ -7,6 +7,7 @@ using System.ComponentModel;
 namespace SilverReader
 {
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -55,6 +56,17 @@ namespace SilverReader
 
         public ObservableCollection<SyndicationFeed> Feeds { get; private set; }
         public ICommand AddFeedCommand { get; private set; }
+        private SyndicationFeed _selectedFeed;
+        public SyndicationFeed SelectedFeed
+        {
+            get { return _selectedFeed; }
+            set
+            {
+                _selectedFeed = value;
+                NotifyPropertyChanged("SelectedFeed");
+                Debug.WriteLine(SelectedFeed.Title.Text);
+            }
+        }
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
