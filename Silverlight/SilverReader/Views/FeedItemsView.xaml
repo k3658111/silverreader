@@ -11,5 +11,18 @@
 		<local:FeedItemsViewModel x:Key="FeedItemsViewModelDataSource" />
 	</UserControl.Resources>
 
-	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedItemsViewModelDataSource}}"/>
+	<Grid x:Name="LayoutRoot" DataContext="{Binding Source={StaticResource FeedItemsViewModelDataSource}}">
+		<ListBox ItemsSource="{Binding Items}" d:DataContext="{d:DesignData /SampleData/FeedItemsViewModelSampleData.xaml}">
+			<ListBox.Resources>
+				<DataTemplate x:Key="ItemDataTemplate">
+					<Grid>
+						<TextBlock Margin="0,0,0,4" TextWrapping="Wrap" Text="{Binding Title.Text}" d:LayoutOverrides="Width, Height"/>
+					</Grid>
+				</DataTemplate>
+			</ListBox.Resources>
+			<ListBox.ItemTemplate>
+				<StaticResource ResourceKey="ItemDataTemplate"/>
+			</ListBox.ItemTemplate>
+		</ListBox>
+	</Grid>
 </UserControl>

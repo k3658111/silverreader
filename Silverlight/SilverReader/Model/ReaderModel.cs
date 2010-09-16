@@ -7,7 +7,7 @@ namespace SilverReader.Model
 
     public class ReaderModel : NotifyPropertyChangedHelper
     {
-        public static ReaderModel Instance = new ReaderModel();
+        public static readonly ReaderModel Instance = new ReaderModel();
         private SyndicationFeed _selectedFeed;
 
         private ReaderModel()

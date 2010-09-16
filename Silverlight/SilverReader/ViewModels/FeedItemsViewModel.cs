@@ -1,28 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Data;
-using System.ComponentModel;
-
-namespace SilverReader
+﻿namespace SilverReader
 {
-	public class FeedItemsViewModel : INotifyPropertyChanged
-	{
-		public FeedItemsViewModel()
-		{
-			
-		}
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ServiceModel.Syndication;
+    using Helper;
+    using Model;
 
-		#region INotifyPropertyChanged
-		public event PropertyChangedEventHandler PropertyChanged;
+    public class FeedItemsViewModel : NotifyPropertyChangedHelper
+    {
+        private readonly ReaderModel _model = ReaderModel.Instance;
 
-		private void NotifyPropertyChanged(String info)
-		{
-			if (PropertyChanged != null)
-			{
-				PropertyChanged(this, new PropertyChangedEventArgs(info));
-			}
-		}
-		#endregion
-	}
+        public FeedItemsViewModel()
+        {
+            _model.PropertyChanged += delegate(object sender, PropertyChangedEventArgs args)
+                                          {
+                                              if (args.PropertyName == "SelectedFeed")
+                                              {
+                                                  if (_model.SelectedFeed != null)
+                                                  {
+                                                      Items = _model.SelectedFeed.Items;
+                                                      NotifyPropertyChanged(() => Items);
+                                                  }
+                                              }
+                                          };
+        }
+
+        public IEnumerable<SyndicationItem> Items { get; private set; }
+    }
 }
