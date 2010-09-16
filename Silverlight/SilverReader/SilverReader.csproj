@@ -80,9 +80,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ReaderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\FeedItemsViewModel.cs" />
     <Compile Include="ViewModels\FeedsViewModel.cs" />
+    <Compile Include="Helper\NotifyPropertyChangedHelper.cs" />
     <Compile Include="Views\FeedItemsView.xaml.cs">
       <DependentUpon>FeedItemsView.xaml</DependentUpon>
     </Compile>
@@ -119,6 +121,7 @@
       <Generator>MSBuild:MarkupCompilePass1</Generator>
     </DesignData>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
