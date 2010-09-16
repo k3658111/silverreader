@@ -1,4 +1,4 @@
-<SilverReader:FeedsViewModel xmlns:SilverReader="clr-namespace:SilverReader" xmlns:System_ServiceModel_Syndication="clr-namespace:System.ServiceModel.Syndication;assembly=System.ServiceModel.Syndication" xmlns:System="clr-namespace:System;assembly=mscorlib">
+﻿<SilverReader:FeedsViewModel xmlns:SilverReader="clr-namespace:SilverReader" xmlns:System_ServiceModel_Syndication="clr-namespace:System.ServiceModel.Syndication;assembly=System.ServiceModel.Syndication" xmlns:System="clr-namespace:System;assembly=mscorlib" AddFeedFormVisibility="Collapsed">
 	<SilverReader:FeedsViewModel.Feeds>
 		<System_ServiceModel_Syndication:SyndicationFeed Generator="Himenaeos bibendum" Id="Tortor justo turpis" Language="Penatibus porttitor tincidunt">
 			<System_ServiceModel_Syndication:SyndicationFeed.Authors>

@@ -21,11 +21,11 @@
 		<Button Content="添加订阅" Margin="3" Width="75" d:LayoutOverrides="Height" HorizontalAlignment="Left">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="Click">
-					<ei:ChangePropertyAction TargetObject="{Binding ElementName=grid}" PropertyName="Visibility"/>
+					<ei:ChangePropertyAction TargetObject="{Binding Mode=OneWay}" PropertyName="AddFeedFormVisibility"/>
 				</i:EventTrigger>
 			</i:Interaction.Triggers>
 		</Button>
-		<Grid x:Name="grid" Grid.Row="1" Visibility="Collapsed">
+		<Grid x:Name="grid" Grid.Row="1" Visibility="{Binding AddFeedFormVisibility, Mode=TwoWay}">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="auto"/>

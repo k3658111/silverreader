@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Net;
     using System.ServiceModel.Syndication;
+    using System.Windows;
     using System.Windows.Input;
     using System.Xml;
     using Helper;
@@ -17,6 +18,7 @@
         public FeedsViewModel()
         {
             Model = ReaderModel.Instance;
+            AddFeedFormVisibility = Visibility.Collapsed;
             AddFeedCommand = new ActionCommand(delegate(object o)
                                                    {
                                                        var url = (string) o;
@@ -30,7 +32,7 @@
                                                                {
                                                                    if (e.Error != null)
                                                                        return;
-
+                                                                   AddFeedFormVisibility = Visibility.Collapsed;
                                                                    string xml = e.Result;
                                                                    if (xml.Length == 0)
                                                                        return;
@@ -62,5 +64,16 @@
         }
 
         public ReaderModel Model { get; set; }
+
+        private Visibility _addFeedFormVisibility;
+        public Visibility AddFeedFormVisibility
+        {
+            get { return _addFeedFormVisibility; }
+            set
+            {
+                _addFeedFormVisibility = value;
+                NotifyPropertyChanged(() => AddFeedFormVisibility);
+            }
+        }
     }
 }
